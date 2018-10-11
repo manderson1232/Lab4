@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewData["Title"] = "Waffles";
+    DateTime now = DateTime.Now;
+    DateTime lastDay = new DateTime(now.Year, 12, 31);
+
+    double daysTogo = Math.Ceiling((lastDay - now).TotalDays);
+    int id = 0;
+    try
+    {
+        id = Int32.Parse(Url.Action().Split("/").Last());
+    }
+    catch { System.Diagnostics.Debug.WriteLine(""); }
+}
+
+
+<h2>Waffles</h2>
+<div class="visible-md-inline-block" id="WafflesGenerator">
+    <a class="btn btn-success" role="button" href="~/Lab4/Waffles/1">1</a>
+    <a class="btn btn-success" role="button" href="~/Lab4/Waffles/2">2</a>
+    <a class="btn btn-success" role="button" href="~/Lab4/Waffles/3">3</a>
+    <a class="btn btn-success" role="button" href="~/Lab4/Waffles/4">4</a>
+    <a class="btn btn-success" role="button" href="~/Lab4/Waffles/5">5</a>
+</div>
+
+@for (int i = 0; i < id; i++){
+    @Html.Raw(System.Web.HttpUtility.HtmlDecode(WaffleGenerator.WaffleEngine.Html(1, true, false)))
+}

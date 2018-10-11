@@ -1,0 +1,16 @@
+﻿@model System.DateTime;
+@{
+    ViewData["Title"] = "Index";
+    DateTime now = DateTime.Now;
+    DateTime lastDay = new DateTime(now.Year, 12, 31);
+
+    double daysTogo = Math.Ceiling((lastDay - now).TotalDays);
+}
+<div class="jumbotron">
+    <h1> @ViewData["Greeting"]</h1>
+</div>
+<h2>It is now @now.ToString("hh:mm") @now.ToString("tt") on @now.DayOfWeek, @now.ToString("MMMM") @now.Day, @now.Year</h2>
+<h3> There are @daysTogo  more days in @now.Year</h3>
+<a class="btn btn-primary" role="button" href="~/Lab4/Waffles">Generate Waffles</a>
+
+
